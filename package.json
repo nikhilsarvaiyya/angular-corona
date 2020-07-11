@@ -1,0 +1,22 @@
+{
+  "name": "mean",
+  "version": "1.0.0",
+  "description": "combine pack",
+  "main": "index.js",
+  "scripts": {
+    "client": "cd src/client && ng build",
+    "server": "cd src/server && node server.js",
+    "install-client": "cd src/client && npm install",
+    "install-server": "cd src/server && npm install",
+    "start": "concurrently \"npm run client\" \"npm run server\"",
+    "install": "concurrently \"npm run install-client\" \"npm run install-server\"",
+    "build-prod": "npm install && rimraf src/client/dist && cd src/client && npm run build",
+    "run-prod": "concurrently \"npm run start:prod\" \"serve -s src/client/build -l 3000\"",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "concurrently": "^5.2.0"
+  }
+}
