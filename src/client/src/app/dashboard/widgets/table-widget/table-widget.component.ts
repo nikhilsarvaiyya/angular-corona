@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-
+import { StatesService } from '../../../services/states.service';
 @Component({
   selector: 'table-widget',
   templateUrl: './table-widget.component.html',
@@ -7,7 +7,13 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
   encapsulation: ViewEncapsulation.None
 })
 export class TableWidgetComponent implements OnInit {
-  constructor() {}
+  tasks: any = [];
 
-  ngOnInit() {}
+  constructor(private allState: StatesService) { }
+
+  ngOnInit() {
+    this.allState.getAllCats().subscribe(tasks => {
+      this.tasks = tasks;
+    });
+  }
 }

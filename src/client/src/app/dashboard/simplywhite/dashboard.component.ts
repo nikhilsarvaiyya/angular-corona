@@ -8,21 +8,16 @@ import { StatesService } from '../../services/states.service';
 export class SimplyWhiteDashboardComponent implements OnInit {
 
   // instantiate posts to an empty array
-  posts: any = [];
+  tasks: any = [];
 
   constructor(private allState: StatesService) { }
 
   ngOnInit() {
-    // Retrieve posts from the API
-    this.allState.getAllPosts().subscribe(posts => {
-      console.log(posts)
-      this.posts = posts;
+    // Retrieve tasks from the API
+    this.allState.getAllCats().subscribe(tasks => {
+      this.tasks = tasks;
     });
-
-    console.log(this.posts)
     //Retrive From Asset Json Object
     //this.posts = POSTDATA
-
-
   }
 }
