@@ -14,7 +14,7 @@ export class StatesService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getAllCats(): Observable<Cat[]> {
+  getAllCountries(): Observable<Cat[]> {
     return this.httpClient.get<Cat[]>('http://localhost:3000/tasks')
   }
 
