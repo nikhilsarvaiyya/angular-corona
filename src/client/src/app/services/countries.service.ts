@@ -15,26 +15,26 @@ export class CountriesService {
   constructor(private httpClient: HttpClient) { }
 
   getAllCountries(): Observable<Country[]> {
-    return this.httpClient.get<Country[]>('http://localhost:3000/tasks')
+    return this.httpClient.get<Country[]>('http://localhost:3000/countries')
   }
 
   getCat(name: string): Observable<Country> {
-    return this.httpClient.get<Country>('http://localhost:3000/tasks/' + name)
+    return this.httpClient.get<Country>('http://localhost:3000/countries/' + name)
   }
 
   insertCat(cat: Country): Observable<Country> {
-    return this.httpClient.post<Country>('http://localhost:3000/tasks/', cat)
+    return this.httpClient.post<Country>('http://localhost:3000/countries/', cat)
   }
 
   updateCat(cat: Country): Observable<void> {
     return this.httpClient.put<void>(
-      'http://localhost:3000/tasks/' + cat.name,
+      'http://localhost:3000/countries/' + cat.name,
       cat
     )
   }
 
   deleteCat(name: string) {
-    return this.httpClient.delete('http://localhost:3000/tasks/' + name)
+    return this.httpClient.delete('http://localhost:3000/countries/' + name)
   }
 }
 

@@ -4,7 +4,7 @@ const path = require('path');
 const http = require('http');
 const bodyParser = require('body-parser');
 var mongoose = require('mongoose');
-var Task = require('./api/models/todoListModel'); //created model loading here
+var Country = require('./api/models/countriesModel'); //created model loading here
 var cors = require('cors');
 
 mongoose.connect('mongodb://localhost/corona');
@@ -20,7 +20,7 @@ db.once('open', function callback() {
 });
 
 // Get our API routes
-const api = require('./api/routes/todoListRoutes');
+const api = require('./api/routes/countriesRoutes');
 
 const app = express();
 app.use(cors());
