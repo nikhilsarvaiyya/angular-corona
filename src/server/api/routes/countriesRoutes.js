@@ -8,7 +8,7 @@ module.exports = function (app) {
     .post(country.create_a_country);
 
 
-  app.route('/countries/:taskId')
+  app.route('/countries/:countryId')
     .get(country.read_a_country)
     .put(country.update_a_country)
     .delete(country.delete_a_country);

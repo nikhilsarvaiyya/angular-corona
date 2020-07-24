@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "angular": {
+    "material": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -11,41 +11,37 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "aot": true,
+            "allowedCommonJsDependencies": [
+              "rxjs-compat",
+              "rxjs",
+              "hammerjs",
+              "chartist"              
+            ],
             "outputPath": "dist",
             "index": "src/index.html",
             "main": "src/main.ts",
             "tsConfig": "src/tsconfig.app.json",
             "polyfills": "src/polyfills.ts",
-            "stylePreprocessorOptions": {
-              "includePaths": [
-                "src/app/@pages/styles",
-                "src/pages_ui/scss"
-              ]
-            },
             "assets": [
               "src/assets",
               "src/favicon.ico"
             ],
             "styles": [
-              "src/assets/plugins/bootstrap/css/bootstrap.min.css",
-              "src/assets/plugins/codrops-stepsform/css/component.css"
+              "node_modules/chartist/dist/chartist.css",
+              "src/styles.css",
+              "src/assets/styles/style.scss"
             ],
-            "scripts": [
-              "node_modules/focus-visible/dist/focus-visible.min.js",
-              "node_modules/scrollreveal/dist/scrollreveal.js",
-              "node_modules/echarts/dist/echarts.min.js",
-              "src/app/@pages/assets/javascript/pages.js",
-              "node_modules/masonry-layout/dist/masonry.pkgd.min.js",
-              "node_modules/isotope-layout/dist/isotope.pkgd.min.js",
-              "node_modules/imagesloaded/imagesloaded.pkgd.js",
-              "src/assets/plugins/modernizr.custom.js",
-              "src/assets/plugins/codrops-stepsform/js/classie.js",
-              "src/assets/plugins/codrops-stepsform/js/stepsForm.js",
-              "src/assets/plugins/skycons/skycons.js"
-            ]
+            "scripts": []
           },
           "configurations": {
             "production": {
+              "budgets": [
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb"
+                }
+              ],
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
@@ -67,18 +63,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "angular:build"
+            "browserTarget": "material:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "angular:build:production"
+              "browserTarget": "material:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "angular:build"
+            "browserTarget": "material:build"
           }
         },
         "test": {
@@ -89,21 +85,11 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "src/tsconfig.spec.json",
             "scripts": [
-              "node_modules/scrollreveal/dist/scrollreveal.js",
-              "node_modules/echarts/dist/echarts.min.js",
-              "src/app/@pages/assets/javascript/pages.js",
-              "node_modules/masonry-layout/dist/masonry.pkgd.min.js",
-              "node_modules/isotope-layout/dist/isotope.pkgd.min.js",
-              "node_modules/imagesloaded/imagesloaded.pkgd.js",
-              "src/assets/plugins/modernizr.custom.js",
-              "src/assets/plugins/codrops-stepsform/js/classie.js",
-              "src/assets/plugins/codrops-stepsform/js/stepsForm.js",
-              "src/assets/plugins/skycons/skycons.js"
+              "node_modules/jquery/dist/jquery.min.js"
             ],
             "styles": [
-              "src/assets/plugins/bootstrap/css/bootstrap.min.css",
-              "src/assets/plugins/font-awesome/css/font-awesome.min.css",
-              "src/assets/plugins/codrops-stepsform/css/component.css"
+              "src/styles.css",
+              "src/assets/styles/style.scss"
             ],
             "assets": [
               "src/assets",
@@ -125,16 +111,16 @@
         }
       }
     },
-    "angular-e2e": {
+    "material-e2e": {
       "root": "",
-      "sourceRoot": "e2e",
+      "sourceRoot": "",
       "projectType": "application",
       "architect": {
         "e2e": {
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "./protractor.conf.js",
-            "devServerTarget": "angular:serve"
+            "devServerTarget": "material:serve"
           }
         },
         "lint": {
@@ -151,11 +137,11 @@
       }
     }
   },
-  "defaultProject": "angular",
+  "defaultProject": "material",
   "schematics": {
     "@schematics/angular:component": {
       "prefix": "app",
-      "styleext": "scss"
+      "style": "css"
     },
     "@schematics/angular:directive": {
       "prefix": "app"
