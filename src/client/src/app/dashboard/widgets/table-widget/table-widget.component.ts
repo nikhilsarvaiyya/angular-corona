@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { StatesService } from '../../../services/states.service';
+import { CountriesService } from '../../../services/countries.service';
 @Component({
   selector: 'table-widget',
   templateUrl: './table-widget.component.html',
@@ -7,14 +7,14 @@ import { StatesService } from '../../../services/states.service';
   encapsulation: ViewEncapsulation.None
 })
 export class TableWidgetComponent implements OnInit {
-  tasks: any = [];
+  countries: any = [];
 
-  constructor(private allState: StatesService) { }
+  constructor(private allCountries: CountriesService) { }
 
   ngOnInit() {
-    this.allState.getAllCountries().subscribe(tasks => {
-      console.log("tasks")
-      this.tasks = tasks;
+    this.allCountries.getAllCountries().subscribe(countries => {
+      this.countries = countries;
     });
   }
 }
+

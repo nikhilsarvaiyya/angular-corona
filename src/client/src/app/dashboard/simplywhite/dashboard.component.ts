@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { StatesService } from '../../services/states.service';
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -7,17 +7,9 @@ import { StatesService } from '../../services/states.service';
 })
 export class SimplyWhiteDashboardComponent implements OnInit {
 
-  // instantiate posts to an empty array
-  tasks: any = [];
-
-  constructor(private allState: StatesService) { }
+  constructor() { }
 
   ngOnInit() {
-    // Retrieve tasks from the API
-    this.allState.getAllCountries().subscribe(tasks => {
-      this.tasks = tasks;
-    });
-    //Retrive From Asset Json Object
-    //this.posts = POSTDATA
+
   }
 }

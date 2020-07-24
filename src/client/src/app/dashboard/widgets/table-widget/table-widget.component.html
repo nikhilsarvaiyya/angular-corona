@@ -25,10 +25,10 @@
   <div class="widget-11-table auto-overflow">
     <table class="table table-condensed table-hover">
       <tbody>
-        <tr *ngFor="let task of tasks">
-          <td class=" fs-12">{{task.name}}</td>
+        <tr *ngFor="let country of countries">
+          <td class=" fs-12">{{country.name}}</td>
           <td class="text-right">
-            <span class="hint-text small">dewdrops</span>
+            <span class="hint-text small">{{country.code}}</span>
           </td>
           <td class="text-right b-r b-dashed b-grey">
             <span class="hint-text small">Qty 1</span>
